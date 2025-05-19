@@ -1,0 +1,20 @@
+body {
+  background: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  text-align: center;
+}
+h1 {
+  font-size: 2em;
+  color: #222;
+}
+p {
+  font-size: 1.2em;
+  color: #333;
+}

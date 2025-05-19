@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>〆ProtectionBot〆 - Statut</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>〆ProtectionBot〆</h1>
+    <p id="status">Chargement du statut...</p>
+    <p id="last-update">Dernière activité : --</p>
+  </div>
+
+  <script>
+    async function fetchStatus() {
+      try {
+        const res = await fetch("status.json");
+        const data = await res.json();
+        const statusElem = document.getElementById("status");
+        const updateElem = document.getElementById("last-update");
+        if (data.online) {
+          statusElem.textContent = "🟢 En ligne";
+        } else {
+          statusElem.textContent = "🔴 Hors ligne";
+        }
+        updateElem.textContent = "Dernière activité : " + data.updated;
+      } catch (err) {
+        document.getElementById("status").textContent = "❌ Erreur de chargement";
+      }
+    }
+
+    fetchStatus();
+    setInterval(fetchStatus, 10000); // refresh every 10s
+  </script>
+</body>
+</html>
